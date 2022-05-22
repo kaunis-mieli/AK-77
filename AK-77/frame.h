@@ -16,7 +16,6 @@ private:
     void OnAbout(wxCommandEvent& event);
 
 private:
-    //Canvas* canvas;
     Manager* manager;
 
     enum id {

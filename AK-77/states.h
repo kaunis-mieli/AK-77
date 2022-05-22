@@ -2,7 +2,7 @@
 
 enum class State
 {
-	NoImageG,
+	NoImage,
 	Enter1stPoint,
 	Enter2ndPoint,
 	FreeStyle

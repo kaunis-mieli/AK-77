@@ -10,24 +10,44 @@ Canvas::Canvas(Manager* manager, wxFrame* parent, wxWindowID id, const wxPoint& 
 	this->Bind(wxEVT_LEFT_UP, &Canvas::OnMouseLeftUp, this);
 	this->Bind(wxEVT_MOTION, &Canvas::OnMouseMotion, this);
 	this->Bind(wxEVT_CHAR, &Canvas::OnKeyChar, this);
+
+	this->SetBackgroundStyle(wxBG_STYLE_PAINT);
 }
 
 void Canvas::OnPaintEvent(wxPaintEvent& e)
 {
-	//service->activeHandler->OnPaintEvent(e);
+	wxAutoBufferedPaintDC dc(this);
+	dc.Clear();
+
+	auto gc = wxGraphicsContext::Create(dc);
+
+	if (gc && this->manager->currentHandler != nullptr)
+	{
+		this->manager->currentHandler->Render(gc);
+		delete gc;
+	}
 }
 
 void Canvas::OnMouseMotion(wxMouseEvent& e)
 {
-	
+	if (this->manager->currentHandler != nullptr)
+	{
+		this->manager->currentHandler->OnMouseMotion(e);
+	}
 }
 
 void Canvas::OnMouseLeftUp(wxMouseEvent& e)
 {
-	//service->processor->OnMouseLeftUp(e);
+	if (this->manager->currentHandler != nullptr)
+	{
+		this->manager->currentHandler->OnMouseLeftUp(e);
+	}
 }
 
 void Canvas::OnKeyChar(wxKeyEvent& e)
 {
-	//service->processor->OnKeyChar(e);
+	if (this->manager->currentHandler != nullptr)
+	{
+		this->manager->currentHandler->OnKeyChar(e);
+	}
 }

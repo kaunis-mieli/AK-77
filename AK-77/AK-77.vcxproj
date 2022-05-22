@@ -153,17 +153,24 @@
   <ItemGroup>
     <ClCompile Include="application.cpp" />
     <ClCompile Include="canvas.cpp" />
+    <ClCompile Include="enterPointHandler.cpp" />
     <ClCompile Include="frame.cpp" />
+    <ClCompile Include="freeStyleHandler.cpp" />
+    <ClCompile Include="handler.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="manager.cpp" />
+    <ClCompile Include="noImageHandler.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="application.h" />
     <ClInclude Include="canvas.h" />
+    <ClInclude Include="enterPointHandler.h" />
     <ClInclude Include="frame.h" />
+    <ClInclude Include="freeStyleHandler.h" />
     <ClInclude Include="handler.h" />
     <ClInclude Include="manager.fwd.h" />
     <ClInclude Include="manager.h" />
+    <ClInclude Include="noImageHandler.h" />
     <ClInclude Include="states.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
