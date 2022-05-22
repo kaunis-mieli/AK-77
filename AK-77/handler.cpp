@@ -34,12 +34,12 @@ void Handler::DrawText(wxGraphicsContext* gc, wxDouble x, wxDouble y, const wcha
 	wxFont font = wxSystemSettings::GetFont(wxSYS_DEFAULT_GUI_FONT);
 	font.SetPointSize(14);
 	font.MakeBold();
-	gc->SetFont(font, *wxBLUE);
+	gc->SetFont(font, *wxYELLOW);
 	
 	wxDouble width, height;
 	
 	gc->GetTextExtent(text, &width, &height);
-	gc->SetBrush(*wxGREEN_BRUSH);
-	gc->DrawRectangle(x - 5, y - 5, width + 10, height + 5);
-	gc->DrawText(text, x, y - 2);
+	gc->SetBrush(*wxBLUE_BRUSH);
+	gc->DrawRectangle(x - 5, y - 5, width + 10, height + 2);
+	gc->DrawText(text, x, y - 5);
 }

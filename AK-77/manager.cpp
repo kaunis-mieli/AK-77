@@ -10,8 +10,8 @@ Manager::Manager(Application* application)
 	this->CreateCanvas();
 
 	this->handlers.insert({ State::NoImage,			new NoImageHandler(this, State::NoImage) });
-	this->handlers.insert({ State::Enter1stPoint,	new EnterPointHandler(this, State::Enter1stPoint, "Click on chart to set\n1st reference point") });
-	this->handlers.insert({ State::Enter2ndPoint,	new EnterPointHandler(this, State::Enter2ndPoint, "Click on chart to set\n2nd reference point") });
+	this->handlers.insert({ State::Enter1stPoint,	new EnterPointHandler(this, State::Enter1stPoint, "1st reference point") });
+	this->handlers.insert({ State::Enter2ndPoint,	new EnterPointHandler(this, State::Enter2ndPoint, "2nd reference point") });
 	this->handlers.insert({ State::FreeStyle,		new FreeStyleHandler(this, State::FreeStyle)});
 
 	this->MakeTransition(State::NoImage);

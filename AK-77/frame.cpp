@@ -1,4 +1,5 @@
 #include "frame.h"
+#include "manager.h"
 
 Frame::Frame(Manager* manager, const wxString& title, const wxPoint& pos, const wxSize& size)
     : wxFrame(NULL, wxID_ANY, title, pos, size), manager(manager)
@@ -25,6 +26,7 @@ Frame::Frame(Manager* manager, const wxString& title, const wxPoint& pos, const 
     Bind(wxEVT_MENU, &Frame::OnHello, this, id::hello);
     Bind(wxEVT_MENU, &Frame::OnAbout, this, wxID_ABOUT);
     Bind(wxEVT_MENU, &Frame::OnExit, this, wxID_EXIT);
+    this->Bind(wxEVT_CHAR, &Frame::OnKeyChar, this);
 }
 void Frame::OnExit(wxCommandEvent& event)
 {
@@ -38,4 +40,12 @@ void Frame::OnAbout(wxCommandEvent& event)
 void Frame::OnHello(wxCommandEvent& event)
 {
     wxLogMessage("Hello world from wxWidgets!");
+}
+
+void Frame::OnKeyChar(wxKeyEvent& e)
+{
+    if (this->manager->currentHandler != nullptr)
+    {
+        this->manager->currentHandler->OnKeyChar(e);
+    }
 }
