@@ -31,3 +31,5 @@
 *.out
 *.app
 /.vs/AK-77/v17
+/AK-77/x64/Release
+/x64/Release
