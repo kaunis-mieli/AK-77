@@ -42,7 +42,7 @@ void NoImageHandler::_OnKeyChar(wxKeyEvent& e)
 
 void NoImageHandler::_OnTransition()
 {
-	this->canvas->SetBackgroundColour(*wxBLUE);
+	this->canvas->SetBackgroundColour(*wxBLACK);
 	this->canvas->Refresh();
 }
 

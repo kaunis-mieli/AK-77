@@ -19,6 +19,19 @@ void EnterPointHandler::Render(wxGraphicsContext* gc)
 		gc->DrawBitmap(bitmap, 0, 0, bitmap.GetWidth(), bitmap.GetHeight());
 	}
 
+	auto size = canvas->GetSize();
+
+	gc->SetPen(*wxBLUE_PEN);
+
+	gc->StrokeLine(0, this->mousePosition.y - 1, size.x, this->mousePosition.y - 1);
+	gc->StrokeLine(this->mousePosition.x - 1, 0, this->mousePosition.x - 1, size.y);
+
+	gc->SetPen(*wxYELLOW_PEN);
+
+	gc->StrokeLine(0, this->mousePosition.y + 1, size.x, this->mousePosition.y + 1);
+	gc->StrokeLine(this->mousePosition.x + 1, 0, this->mousePosition.x + 1, size.y);
+
+
 	this->DrawText(gc, this->mousePosition.x + 10, this->mousePosition.y + 10, label);
 }
 
@@ -68,12 +81,12 @@ void EnterPointHandler::_OnTransition()
 
 	if (state == State::Enter1stPoint)
 	{
-		this->canvas->SetBackgroundColour(*wxYELLOW);
+		/*this->canvas->SetBackgroundColour(*wxYELLOW);*/
 	}
 
 	if (state == State::Enter2ndPoint)
 	{
-		this->canvas->SetBackgroundColour(*wxRED);
+		//this->canvas->SetBackgroundColour(*wxRED);
 	}
 
 	this->canvas->Refresh();
